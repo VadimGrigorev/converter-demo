@@ -98,4 +98,5 @@ header h1{
 #history{
     width:100%;
     background-color:rgb(231, 231, 231);
+    overflow-x: scroll;
 }

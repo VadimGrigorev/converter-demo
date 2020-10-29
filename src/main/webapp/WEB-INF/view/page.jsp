@@ -36,7 +36,8 @@
 		<div class="box" id="main-box">
 			<form class="main-box-div" id=top-div action="/" method="post">
 				<div class="hor-div">
-					<input class="input-number" placeholder="enter amount..." type="float" name="input_value" value="${input_value}" required>
+					<input class="input-number" placeholder="enter amount..." type="float" name="input_value"
+						   value="${input_value}" pattern="\d+\.?\d*" required>
 					<select class="input" multiple="multiple" name="charcode-one" id="select-curr-one" required>
 						<c:forEach items="${currencies}" var="currencies">
 							<option value="${currencies}">${currencies}</option>

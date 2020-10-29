@@ -20,12 +20,6 @@ public class Log {
     private String secondCharCode;
 
     @Column
-    private String firstName;
-
-    @Column
-    private String secondName;
-
-    @Column
     private double firstValue;
 
     @Column
@@ -34,11 +28,9 @@ public class Log {
     public Log() {
     }
 
-    public Log(String firstCharCode, String secondCharCode, String firstName, String secondName, double firstValue, double secondValue) {
+    public Log(String firstCharCode, String secondCharCode, double firstValue, double secondValue) {
         this.firstCharCode = firstCharCode;
         this.secondCharCode = secondCharCode;
-        this.firstName = firstName;
-        this.secondName = secondName;
         this.firstValue = firstValue;
         this.secondValue = secondValue;
         this.time = LocalDateTime.now();
@@ -76,22 +68,6 @@ public class Log {
         this.secondCharCode = secondCharCode;
     }
 
-    public String getFirstName() {
-        return firstName;
-    }
-
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
-    }
-
-    public String getSecondName() {
-        return secondName;
-    }
-
-    public void setSecondName(String secondName) {
-        this.secondName = secondName;
-    }
-
     public double getFirstValue() {
         return firstValue;
     }
@@ -106,5 +82,22 @@ public class Log {
 
     public void setSecondValue(double secondValue) {
         this.secondValue = secondValue;
+    }
+
+    @Override
+    public String toString() {
+
+        //display zero before minute if minute < 10
+        int minute = time.getMinute();
+        String minuteString = Integer.toString(minute);
+        if(!minuteString.matches("..")) {
+            minuteString = Integer.toString(minute);
+            minuteString = "0" + minuteString;
+        }
+
+        return String.format("%s %.2f ---> %s %.2f ---------- %s/%s/%s %s:%s", firstCharCode,
+                firstValue, secondCharCode, secondValue,
+                time.getDayOfMonth(), time.getMonth(), time.getYear(),
+                time.getHour(), minuteString);
     }
 }
